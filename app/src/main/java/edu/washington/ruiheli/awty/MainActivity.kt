@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val minEditText = findViewById<EditText>(R.id.intervalEditText)
         val msgEditText = findViewById<EditText>(R.id.messageEditText)
         var taskRef: CountDownTimer? = null
+
         actionBtn.setOnClickListener {
 
             var toastMsg = ""
@@ -75,14 +76,14 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
-                taskRef = task
+
 
                 if(btnText == "START"){
                     if (permission != PackageManager.PERMISSION_GRANTED){
                         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.SEND_SMS), 0)
                     }else{
                         actionBtn.text = "STOP"
-                        taskRef?.start()
+                        taskRef = task.start()
                     }
                 }else {
                     Log.i("INSTOP", "in stop")
